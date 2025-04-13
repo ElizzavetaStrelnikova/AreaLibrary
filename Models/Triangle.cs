@@ -27,5 +27,15 @@
             double p = (A + B + C) / 2;
             return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
         }
+
+        public bool IsRightAngled(double tolerance = 0.0001)
+        {
+            var sides = new[] { A, B, C }.OrderBy(x => x).ToArray();
+            double a = sides[0];
+            double b = sides[1];
+            double c = sides[2];
+
+            return Math.Abs(a * a + b * b - c * c) < tolerance;
+        }
     }
 }
